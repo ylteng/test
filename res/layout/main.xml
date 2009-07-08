@@ -28,6 +28,11 @@
     	android:gravity="center"
     	android:layout_weight="1"
     >
+    	<TextView
+    		android:layout_height="wrap_content"
+    		android:layout_width="70dip"
+    		android:text="@string/red"
+    	/>
 		<SeekBar 
 			android:id="@+id/red" 
 			android:layout_height="wrap_content" 
@@ -53,6 +58,11 @@
     	android:gravity="center"
     	android:layout_weight="1"
     >
+    	<TextView
+    		android:layout_height="wrap_content"
+    		android:layout_width="70dip"
+    		android:text="@string/green"
+    	/>
 		<SeekBar 
 			android:id="@+id/green" 
 			android:layout_height="wrap_content" 
@@ -78,6 +88,11 @@
     	android:gravity="center"
     	android:layout_weight="1"
     >
+    	<TextView
+    		android:layout_height="wrap_content"
+    		android:layout_width="70dip"
+    		android:text="@string/blue"
+    	/>
 		<SeekBar 
 			android:id="@+id/blue" 
 			android:layout_height="wrap_content" 

@@ -19,4 +19,7 @@
 <resources>
     <string name="app_name">LED tester</string>
     <string name="welcome_text">This utility is meant to help you see the capabilities of your device's LED. Make sure that nothing else changes the color of the LED (eg. phone is not charging), and the hardware will be told to shine the LED to whatever color you set with sliders.</string>
+    <string name="red">Red:</string>
+    <string name="green">Green:</string>
+    <string name="blue">Blue:</string>
 </resources>
