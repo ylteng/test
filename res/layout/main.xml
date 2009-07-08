@@ -22,10 +22,11 @@
 		/>
 		<TextView
 			android:id="@+id/red_label"
-			android:layout_width="wrap_content"
+			android:layout_width="40dip"
 			android:layout_height="wrap_content"
 			android:layout_margin="5dip"
 			android:text="255"
+			android:gravity="right"
 		/>
 	</LinearLayout>
     <LinearLayout
@@ -46,10 +47,11 @@
 		/>
 		<TextView
 			android:id="@+id/green_label"
-			android:layout_width="wrap_content"
+			android:layout_width="40dip"
 			android:layout_height="wrap_content"
 			android:layout_margin="5dip"
 			android:text="255"
+			android:gravity="right"
 		/>
 	</LinearLayout>
     <LinearLayout
@@ -70,10 +72,11 @@
 		/>
 		<TextView
 			android:id="@+id/blue_label"
-			android:layout_width="wrap_content"
+			android:layout_width="40dip"
 			android:layout_height="wrap_content"
 			android:layout_margin="5dip"
 			android:text="255"
+			android:gravity="right"
 		/>
 	</LinearLayout>
 </LinearLayout>
