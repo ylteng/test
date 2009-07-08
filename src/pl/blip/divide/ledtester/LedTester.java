@@ -65,6 +65,10 @@ public class LedTester extends Activity {
 	private TextView blueLabel;
 	private NotificationManager notificationManager;
 	private Notification notification;
+	private SeekBar onBar;
+	private TextView onLabel;
+	private TextView offLabel;
+	private SeekBar offBar;
 
 	/** Called when the activity is first created. */
     @Override
@@ -75,19 +79,25 @@ public class LedTester extends Activity {
         redBar = (SeekBar) findViewById(R.id.red);
         greenBar = (SeekBar) findViewById(R.id.green);
         blueBar = (SeekBar) findViewById(R.id.blue);
-        
+        onBar = (SeekBar) findViewById(R.id.on_ms);
+        offBar = (SeekBar) findViewById(R.id.off_ms);
+                
         redLabel = (TextView) findViewById(R.id.red_label);
         greenLabel = (TextView) findViewById(R.id.green_label);
         blueLabel = (TextView) findViewById(R.id.blue_label);
+        onLabel = (TextView) findViewById(R.id.on_ms_label);
+        offLabel = (TextView) findViewById(R.id.off_ms_label);
         
         redBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(redLabel));
         greenBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(greenLabel));
         blueBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(blueLabel));
+        onBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(onLabel));
+        offBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(offLabel));
 
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification = new Notification();
         notification.ledOffMS = 0;
-        notification.ledOnMS = 1000;
+        notification.ledOnMS = 5000;
         notification.flags = Notification.FLAG_SHOW_LIGHTS;
         
         printSystemInfo();
@@ -130,8 +140,13 @@ public class LedTester extends Activity {
 		int blue = blueBar.getProgress();
 		
 		int color = 0xff000000 | (red << 16) | (green << 8) | blue;
+
 		notification.ledARGB = color;
-		notificationManager.notify(0, notification);
+
+        notification.ledOffMS = offBar.getProgress();
+        notification.ledOnMS = onBar.getProgress();
+        
+        notificationManager.notify(0, notification);
 	}
 	
 	@Override

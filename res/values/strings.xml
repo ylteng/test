@@ -22,4 +22,8 @@
     <string name="red">Red:</string>
     <string name="green">Green:</string>
     <string name="blue">Blue:</string>
+    <string name="blink">Blink:</string>
+    <string name="onfor">on for </string>
+    <string name="offfor"> off for </string>
+    <string name="ms">ms</string> 
 </resources>
