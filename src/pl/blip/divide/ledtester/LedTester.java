@@ -3,7 +3,9 @@ package pl.blip.divide.ledtester;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,8 +70,26 @@ public class LedTester extends Activity {
         notification.ledOffMS = 0;
         notification.ledOnMS = 1000;
         notification.flags = Notification.FLAG_SHOW_LIGHTS;
-        updateLedColor();
+        
+        printSystemInfo();
     }
+
+	private void printSystemInfo() {
+		Log.i("LedTester", "System info:\n" +
+				"\tBoard: " + Build.BOARD +
+				"\n\tBrand: " + Build.BRAND +
+				"\n\tDevice: " + Build.DEVICE +
+				"\n\tDisplay: " + Build.DISPLAY +
+				"\n\tFingerprint: " + Build.FINGERPRINT +
+				"\n\tHost: " + Build.HOST +
+				"\n\tID: " + Build.ID +
+				"\n\tModel: " + Build.MODEL +
+				"\n\tProduct: " + Build.PRODUCT + 
+				"\n\tTags: " + Build.TAGS + 
+				"\n\tType: " + Build.TYPE +
+				"\n\tUser: " + Build.USER
+		);
+	}
 
 	public void updateLedColor() {
 		int red = redBar.getProgress();
@@ -79,5 +99,17 @@ public class LedTester extends Activity {
 		int color = 0xff000000 | (red << 16) | (green << 8) | blue;
 		notification.ledARGB = color;
 		notificationManager.notify(0, notification);
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		notificationManager.cancel(0);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		updateLedColor();
 	}
 }
