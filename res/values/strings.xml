@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, LedTester!</string>
     <string name="app_name">LED tester</string>
+    <string name="welcome_text">This utility is meant to help you see the capabilities of your device's LED. Make sure that nothing else changes the color of the LED (eg. phone isn't charging), and we will try to make the LED shine on whatever color you pick here.</string>
 </resources>

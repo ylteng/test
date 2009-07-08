@@ -1,9 +1,12 @@
 package pl.blip.divide.ledtester;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class LedTester extends Activity {
@@ -18,6 +21,8 @@ public class LedTester extends Activity {
 		public void onProgressChanged(SeekBar seekBar, int progress,
 				boolean fromUser) {
 			myLabel.setText(Integer.toString(progress));
+			
+			updateLedColor();
 		}
 
 		@Override
@@ -35,6 +40,8 @@ public class LedTester extends Activity {
 	private TextView redLabel;
 	private TextView greenLabel;
 	private TextView blueLabel;
+	private NotificationManager notificationManager;
+	private Notification notification;
 
 	/** Called when the activity is first created. */
     @Override
@@ -53,5 +60,24 @@ public class LedTester extends Activity {
         redBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(redLabel));
         greenBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(greenLabel));
         blueBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(blueLabel));
+        
+        Toast.makeText(this, R.string.welcome_text, Toast.LENGTH_LONG).show();
+        
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notification = new Notification();
+        notification.ledOffMS = 0;
+        notification.ledOnMS = 1000;
+        notification.flags = Notification.FLAG_SHOW_LIGHTS;
+        updateLedColor();
     }
+
+	public void updateLedColor() {
+		int red = redBar.getProgress();
+		int green = greenBar.getProgress();
+		int blue = blueBar.getProgress();
+		
+		int color = 0xff000000 | (red << 16) | (green << 8) | blue;
+		notification.ledARGB = color;
+		notificationManager.notify(0, notification);
+	}
 }
