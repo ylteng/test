@@ -19,14 +19,17 @@
 package pl.blip.divide.ledtester;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class LedTester extends Activity {
@@ -80,9 +83,7 @@ public class LedTester extends Activity {
         redBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(redLabel));
         greenBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(greenLabel));
         blueBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(blueLabel));
-        
-        Toast.makeText(this, R.string.welcome_text, Toast.LENGTH_LONG).show();
-        
+
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification = new Notification();
         notification.ledOffMS = 0;
@@ -90,6 +91,20 @@ public class LedTester extends Activity {
         notification.flags = Notification.FLAG_SHOW_LIGHTS;
         
         printSystemInfo();
+
+        showDialog(0);
+    }
+    
+    @Override
+    protected Dialog onCreateDialog(int id) {
+    	return new AlertDialog.Builder(this)
+    		.setMessage(R.string.welcome_text)
+    		.setPositiveButton(android.R.string.ok, new OnClickListener() {
+	    		@Override
+	    		public void onClick(DialogInterface dialog, int which) {
+	    			dialog.dismiss();
+	    		}
+    	}).create();
     }
 
 	private void printSystemInfo() {
