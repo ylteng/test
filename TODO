@@ -2,7 +2,6 @@
 - put on Ohloh
 - icon conformant to android guidelines
 - nicer layout (especially in vertical orientation)
-- don't show welcome message on orientation change
 - public API
 - select all text on focusing a text box
 

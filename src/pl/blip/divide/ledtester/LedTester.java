@@ -159,7 +159,8 @@ public class LedTester extends Activity {
         
         printSystemInfo();
 
-        showDialog(0);
+        if (savedInstanceState == null)
+        	showDialog(0);
     }
     
     @Override
