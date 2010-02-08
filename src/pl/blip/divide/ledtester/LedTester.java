@@ -55,7 +55,12 @@ public class LedTester extends Activity {
 			if (v == null)
 				return;
 			
-			final int value = Integer.parseInt(v.getText().toString());
+			int value;
+			try {
+				value = Integer.parseInt(v.getText().toString());
+			} catch (NumberFormatException e) {
+				value = 0;
+			}
 			seekBar.setProgress(value);
 			v.setText(String.valueOf(seekBar.getProgress()));
 		}
