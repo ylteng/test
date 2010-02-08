@@ -28,13 +28,50 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView.OnEditorActionListener;
 
 public class LedTester extends Activity {
-    public class LabelUpdatingOnSeekBarChangeListener implements
+    public class TextEditListener implements OnEditorActionListener, OnFocusChangeListener {
+		private SeekBar seekBar;
+
+		public TextEditListener(SeekBar seekBar) {
+			this.seekBar = seekBar;
+		}
+
+		@Override
+		public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+			updateFrom(v);
+			return true;
+		}
+
+		private void updateFrom(TextView v) {
+			if (v == null)
+				return;
+			
+			final int value = Integer.parseInt(v.getText().toString());
+			if (value == seekBar.getProgress())
+				return;
+			seekBar.setProgress(value);
+			v.setText(String.valueOf(seekBar.getProgress()));
+			updateLedColor();
+		}
+
+		@Override
+		public void onFocusChange(View v, boolean hasFocus) {
+			if (!hasFocus)
+				updateFrom((TextView) v);
+		}
+
+	}
+
+	public class LabelUpdatingOnSeekBarChangeListener implements
 			OnSeekBarChangeListener {
 		private TextView myLabel;
 		public LabelUpdatingOnSeekBarChangeListener(TextView label) {
@@ -44,9 +81,10 @@ public class LedTester extends Activity {
 		@Override
 		public void onProgressChanged(SeekBar seekBar, int progress,
 				boolean fromUser) {
-			myLabel.setText(Integer.toString(progress));
-			
-			updateLedColor();
+			final String text = Integer.toString(progress);
+			if (myLabel.getText().toString().equals(text))
+				return;
+			myLabel.setText(text);
 		}
 
 		@Override
@@ -94,6 +132,23 @@ public class LedTester extends Activity {
         blueBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(blueText));
         onBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(onText));
         offBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(offText));
+        
+        TextEditListener tel;
+        tel = new TextEditListener(redBar);
+        redText.setOnEditorActionListener(tel);
+        redText.setOnFocusChangeListener(tel);
+        tel = new TextEditListener(greenBar);
+        greenText.setOnEditorActionListener(tel);
+        greenText.setOnFocusChangeListener(tel);
+        tel = new TextEditListener(blueBar);
+        blueText.setOnEditorActionListener(tel);
+        blueText.setOnFocusChangeListener(tel);
+        tel = new TextEditListener(onBar);
+        onText.setOnEditorActionListener(tel);
+        onText.setOnFocusChangeListener(tel);
+        tel = new TextEditListener(offBar);
+        offText.setOnEditorActionListener(tel);
+        offText.setOnFocusChangeListener(tel);
 
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification = new Notification();

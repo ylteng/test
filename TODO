@@ -1,11 +1,11 @@
 - add Chinese translation
 - add Polish translation
 - put on Ohloh
-- manual color entry
 - icon conformant to android guidelines
 - nicer layout (especially in vertical orientation)
 - don't show welcome message on orientation change
 - public API
+- select all text on focusing a text box
 
 string changes needed:
 - explain that it's not for setting LED color, just for seeing it.
