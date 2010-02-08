@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LED tester for Android platform
+    Copyright (C) 2009 Rafał Rzepecki
+
+    Chinese translation courtesy of NetDragon Websoft Inc. (China).
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_name">LED 測試器</string>
+    <string name="welcome_text">此工具目的是幫助您看到您手機的LED能力。請確保沒有其他改變LED的色彩（例如手機正在充電），硬體LED將會安妮手指設定的色彩發光.</string>
+    <string name="red">紅色:</string>
+    <string name="green">綠色:</string>
+    <string name="blue">藍色:</string>
+    <string name="blink">閃爍:</string>
+    <string name="onfor">開啟 </string>
+    <string name="offfor"> 關閉 </string>
+    <string name="ms">ms</string> 
+</resources>
