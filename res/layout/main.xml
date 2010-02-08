@@ -42,13 +42,15 @@
 			android:progress="255"
 	    	android:layout_weight="1"
 		/>
-		<TextView
-			android:id="@+id/red_label"
-			android:layout_width="40dip"
+		<EditText
+			android:id="@+id/red_text"
+			android:layout_width="50dip"
 			android:layout_height="wrap_content"
 			android:layout_margin="5dip"
 			android:text="255"
 			android:gravity="right"
+			android:inputType="number"
+			android:maxLength="3"
 		/>
 	</LinearLayout>
     <LinearLayout
@@ -72,13 +74,15 @@
 			android:progress="255"
 	    	android:layout_weight="1"
 		/>
-		<TextView
-			android:id="@+id/green_label"
-			android:layout_width="40dip"
+		<EditText
+			android:id="@+id/green_text"
+			android:layout_width="50dip"
 			android:layout_height="wrap_content"
 			android:layout_margin="5dip"
 			android:text="255"
 			android:gravity="right"
+			android:inputType="number"
+			android:maxLength="3"
 		/>
 	</LinearLayout>
     <LinearLayout
@@ -102,21 +106,23 @@
 			android:progress="255"
 	    	android:layout_weight="1"
 		/>
-		<TextView
-			android:id="@+id/blue_label"
-			android:layout_width="40dip"
+		<EditText
+			android:id="@+id/blue_text"
+			android:layout_width="50dip"
 			android:layout_height="wrap_content"
 			android:layout_margin="5dip"
 			android:text="255"
 			android:gravity="right"
+			android:inputType="number"
+			android:maxLength="3"
 		/>
 	</LinearLayout>
 	<LinearLayout
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
 		android:gravity="center"
-		android:layout_weight="1"
+		android:layout_height="fill_parent"
+		android:layout_weight="0.8"
 	>
     	<TextView
     		android:layout_height="wrap_content"
@@ -151,13 +157,15 @@
 				android:progress="5000"
 		    	android:layout_weight="1"
 			/>
-			<TextView
-				android:id="@+id/on_ms_label"
-				android:layout_width="40dip"
+			<EditText
+				android:id="@+id/on_ms_text"
+				android:layout_width="60dip"
 				android:layout_height="wrap_content"
 				android:layout_margin="5dip"
 				android:text="5000"
 				android:gravity="right"
+				android:inputType="number"
+				android:maxLength="4"
 			/>
 			<TextView
 				android:layout_width="wrap_content"
@@ -188,13 +196,15 @@
 				android:progress="0"
 		    	android:layout_weight="1"
 			/>
-			<TextView
-				android:id="@+id/off_ms_label"
-				android:layout_width="40dip"
+			<EditText
+				android:id="@+id/off_ms_text"
+				android:layout_width="60dip"
 				android:layout_height="wrap_content"
 				android:layout_margin="5dip"
 				android:text="0"
 				android:gravity="right"
+				android:inputType="number"
+				android:maxLength="4"
 			/>
 			<TextView
 				android:layout_width="wrap_content"

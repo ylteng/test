@@ -28,6 +28,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -60,14 +61,14 @@ public class LedTester extends Activity {
 	private SeekBar redBar;
 	private SeekBar greenBar;
 	private SeekBar blueBar;
-	private TextView redLabel;
-	private TextView greenLabel;
-	private TextView blueLabel;
+	private EditText redText;
+	private EditText greenText;
+	private EditText blueText;
 	private NotificationManager notificationManager;
 	private Notification notification;
 	private SeekBar onBar;
-	private TextView onLabel;
-	private TextView offLabel;
+	private EditText onText;
+	private EditText offText;
 	private SeekBar offBar;
 
 	/** Called when the activity is first created. */
@@ -82,17 +83,17 @@ public class LedTester extends Activity {
         onBar = (SeekBar) findViewById(R.id.on_ms);
         offBar = (SeekBar) findViewById(R.id.off_ms);
                 
-        redLabel = (TextView) findViewById(R.id.red_label);
-        greenLabel = (TextView) findViewById(R.id.green_label);
-        blueLabel = (TextView) findViewById(R.id.blue_label);
-        onLabel = (TextView) findViewById(R.id.on_ms_label);
-        offLabel = (TextView) findViewById(R.id.off_ms_label);
+        redText = (EditText) findViewById(R.id.red_text);
+        greenText = (EditText) findViewById(R.id.green_text);
+        blueText = (EditText) findViewById(R.id.blue_text);
+        onText = (EditText) findViewById(R.id.on_ms_text);
+        offText = (EditText) findViewById(R.id.off_ms_text);
         
-        redBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(redLabel));
-        greenBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(greenLabel));
-        blueBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(blueLabel));
-        onBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(onLabel));
-        offBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(offLabel));
+        redBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(redText));
+        greenBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(greenText));
+        blueBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(blueText));
+        onBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(onText));
+        offBar.setOnSeekBarChangeListener(new LabelUpdatingOnSeekBarChangeListener(offText));
 
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notification = new Notification();
