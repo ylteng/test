@@ -56,11 +56,8 @@ public class LedTester extends Activity {
 				return;
 			
 			final int value = Integer.parseInt(v.getText().toString());
-			if (value == seekBar.getProgress())
-				return;
 			seekBar.setProgress(value);
 			v.setText(String.valueOf(seekBar.getProgress()));
-			updateLedColor();
 		}
 
 		@Override
@@ -82,9 +79,8 @@ public class LedTester extends Activity {
 		public void onProgressChanged(SeekBar seekBar, int progress,
 				boolean fromUser) {
 			final String text = Integer.toString(progress);
-			if (myLabel.getText().toString().equals(text))
-				return;
 			myLabel.setText(text);
+			updateLedColor();
 		}
 
 		@Override
